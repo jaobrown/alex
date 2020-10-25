@@ -1,9 +1,12 @@
 import React from 'react'
+import { useAppState } from '../../Layout'
 
 export const Drawer = () => {
-    return (
-        <div>
-            haha, drawer
-        </div>
-    )
+  const { isMenuOpen, toggleMenu } = useAppState()
+  return isMenuOpen ? (
+    <div className="bg-red-500">
+      <button onClick={toggleMenu}>close</button>
+      haha, drawer
+    </div>
+  ) : null
 }

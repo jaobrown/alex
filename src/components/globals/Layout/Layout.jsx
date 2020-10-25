@@ -15,7 +15,7 @@ export const Layout = ({ children }) => {
     <AppContext.Provider value={{ isMenuOpen: isToggled, toggleMenu: toggle }}>
       <div className="font-sans antialiased">
         <Header />
-        {/* <Drawer /> */}
+        <Drawer />
         <main className="">{children}</main>
         <Footer />
       </div>

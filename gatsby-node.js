@@ -1,46 +1,70 @@
-// const path = require(`path`)
+const path = require(`path`)
 
-// exports.createPages = async ({ graphql, actions }) => {
-//   const { createPage, createRedirect } = actions
-//   const result = await graphql(`
-//     query {
-//       pages: allSanityPage {
-//         nodes {
-//           title
-//           slug {
-//             current
-//           }
-//           _id
-//         }
-//       }
-//       redirects: allSanityRedirect {
-//         nodes {
-//           toPath
-//           fromPath
-//           statusCode
-//         }
-//       }
-//     }
-//   `)
+const slugify = (string) => {
+  const a =
+    'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;'
+  const b =
+    'aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnoooooooooprrsssssttuuuuuuuuuwxyyzzz------'
+  const p = new RegExp(a.split('').join('|'), 'g')
 
-//   // create pages
-//   result.data.pages.nodes.forEach((page) => {
-//     const slug = page.slug ? page.slug.current : `/`
-//     createPage({
-//       path: slug,
-//       component: path.resolve(`./src/templates/page.js`),
-//       context: {
-//         _id: page._id,
-//       },
-//     })
-//   })
+  return string
+    .toString()
+    .toLowerCase()
+    .replace(/\s+/g, '-') // Replace spaces with -
+    .replace(p, (c) => b.charAt(a.indexOf(c))) // Replace special characters
+    .replace(/&/g, '-and-') // Replace & with 'and'
+    .replace(/[^\w\-]+/g, '') // Remove all non-word characters
+    .replace(/\-\-+/g, '-') // Replace multiple - with single -
+    .replace(/^-+/, '') // Trim - from start of text
+    .replace(/-+$/, '') // Trim - from end of text
+}
 
-//   // create redirects
-//   result.data.redirects.nodes.forEach((redirect) => {
-//     createRedirect({
-//       fromPath: redirect.fromPath,
-//       toPath: redirect.toPath,
-//       statusCode: redirect.statusCode,
-//     })
-//   })
-// }
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  const { createPage } = actions
+  const result = await graphql(`
+    query {
+      pages: allSanityPage {
+        nodes {
+          _id
+          slug {
+            current
+          }
+        }
+      }
+      allWork: allSanityWork {
+        nodes {
+          _id
+          title
+          companyName
+        }
+      }
+    }
+  `)
+
+  // create pages
+  result.data.pages.nodes.forEach((page) => {
+    const slug = page.slug ? page.slug.current : `/`
+    reporter.info(`Creating page at route: ${slug}`)
+    createPage({
+      path: slug,
+      component: path.resolve(`./src/templates/page.jsx`),
+      context: {
+        _id: page._id,
+      },
+    })
+  })
+
+  // create work
+  result.data.allWork.nodes.forEach((work) => {
+    const fullWorkName = `${work.title} ${work.companyName}`
+    const slug = slugify(fullWorkName)
+    reporter.info(`Creating page at route: ${slug}`)
+    createPage({
+      path: slug,
+      component: path.resolve(`./src/templates/work.jsx`),
+      context: {
+        _id: work._id,
+      },
+    })
+  })
+}
