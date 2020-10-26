@@ -85,7 +85,19 @@ module.exports = {
     },
     typography: (theme) => ({
       default: {
-        css: {},
+        css: {
+          color: theme('colors.gray.700'),
+          p: {
+            fontFamily: theme('fontFamily.serif[0]'),
+            fontSize: '1.125rem',
+          },
+          h2: {
+            fontSize: '1rem',
+            fontWeight: '600',
+            letterSpacing: '1.25px',
+            textTransform: 'uppercase',
+          },
+        },
       },
     }),
   },

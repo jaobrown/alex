@@ -4,7 +4,7 @@ import { useAppState } from '../../Layout'
 export const Mobile = () => {
   const { toggleMenu } = useAppState()
   return (
-    <nav className="flex items-center lg:hidden">
+    <nav className="flex items-center sm:hidden">
       <button onClick={toggleMenu} className="w-8 h-8">
         <svg
           xmlns="http://www.w3.org/2000/svg"

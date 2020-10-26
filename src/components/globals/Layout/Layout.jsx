@@ -8,13 +8,13 @@ export const AppContext = createContext({
   isMenuOpen: false,
 })
 
-export const Layout = ({ children }) => {
+export const Layout = ({ colorMode, children }) => {
   const { isToggled, toggle } = useToggle(false)
 
   return (
     <AppContext.Provider value={{ isMenuOpen: isToggled, toggleMenu: toggle }}>
       <div className="font-sans antialiased">
-        <Header />
+        <Header colorMode={colorMode} />
         <Drawer />
         <main className="">{children}</main>
         <Footer />
