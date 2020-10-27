@@ -3,6 +3,7 @@ import { Header } from '../Header'
 import { Footer } from '../Footer'
 import { Drawer } from '../Navigation'
 import { useToggle } from '@hooks'
+import { Contact } from '@layouts'
 
 export const AppContext = createContext({
   isMenuOpen: false,
@@ -17,6 +18,7 @@ export const Layout = ({ colorMode, children }) => {
         <Header colorMode={colorMode} />
         <Drawer />
         <main className="">{children}</main>
+        <Contact />
         <Footer />
       </div>
     </AppContext.Provider>

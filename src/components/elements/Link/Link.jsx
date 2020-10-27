@@ -16,6 +16,9 @@ export const Link = ({
     case 'link':
       style = 'uppercase font-semibold tracking-widest'
       break
+    case 'text':
+      style = 'font-serif font-normal lowercase border-b border-blue'
+      break
     default:
       style = 'uppercase font-semibold tracking-widest'
       break

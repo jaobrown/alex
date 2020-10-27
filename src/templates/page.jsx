@@ -12,10 +12,10 @@ const PageTemplate = ({ data, location }) => {
     .map((c) => {
       let layout = null
       switch (c._type) {
-        // case 'bigQuote':
-        //   const { Quote } = require('@layouts')
-        //   layout = <Quote key={c._key} {...c} />
-        //   break
+        case 'hero':
+          const { Hero } = require('@layouts')
+          layout = <Hero key={c._key} {...c} />
+          break
         default:
           const { ComingSoon } = require('@utils/components')
           layout = <ComingSoon key={c._key} {...c} />

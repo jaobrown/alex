@@ -8,7 +8,7 @@ export const Footer = () => {
     <footer className="bg-black">
       <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
         <div className="flex justify-center space-x-6 md:order-2">
-          <a href="#" className="text-white hover:text-gray-300">
+          <a href="/" className="text-white hover:text-gray-300">
             <span className="sr-only">Pinterest</span>
             <svg
               className="w-6 h-6"
@@ -23,7 +23,7 @@ export const Footer = () => {
               />
             </svg>
           </a>
-          <a href="#" className="text-white hover:text-gray-300">
+          <a href="/" className="text-white hover:text-gray-300">
             <span className="sr-only">Instagram</span>
             <svg
               className="w-6 h-6"
@@ -38,7 +38,7 @@ export const Footer = () => {
               />
             </svg>
           </a>
-          <a href="#" className="text-white hover:text-gray-300">
+          <a href="/" className="text-white hover:text-gray-300">
             <span className="sr-only">Dribbble</span>
             <svg
               className="w-6 h-6"
@@ -54,11 +54,11 @@ export const Footer = () => {
             </svg>
           </a>
         </div>
-        <div className="mt-8 md:mt-0 md:order-1 md:flex md:items-center">
+        <div className="mt-12 md:mt-0 md:order-1 md:flex md:items-center">
           <Link to="/" className="text-white">
             <Logo className="w-16 h-16 mx-auto md:mx-0" />
           </Link>
-          <p className="mt-4 text-sm font-medium leading-6 tracking-wider text-center text-white uppercase md:ml-6 lg:ml-12 md:mt-0">
+          <p className="mt-6 text-sm font-medium leading-6 tracking-wider text-center text-white uppercase md:ml-6 lg:ml-12 md:mt-0">
             © 2020 Alexandra Brown
             <span className="block md:inline-block md:ml-8 lg:ml-12">
               Indianapolis, IN
