@@ -12,6 +12,18 @@ const PageTemplate = ({ data, location }) => {
     .map((c) => {
       let layout = null
       switch (c._type) {
+        case 'educations':
+          const { Educations } = require('@layouts')
+          layout = <Educations key={c._key} {...c} />
+          break
+        case 'experiences':
+          const { Experiences } = require('@layouts')
+          layout = <Experiences key={c._key} {...c} />
+          break
+        case 'featuredWork':
+          const { FeaturedWork } = require('@layouts')
+          layout = <FeaturedWork key={c._key} {...c} />
+          break
         case 'hero':
           const { Hero } = require('@layouts')
           layout = <Hero key={c._key} {...c} />

@@ -17,7 +17,7 @@ export const Layout = ({ colorMode, children }) => {
       <div className="font-sans antialiased">
         <Header colorMode={colorMode} />
         <Drawer />
-        <main className="">{children}</main>
+        <main className="bg-white">{children}</main>
         <Contact />
         <Footer />
       </div>

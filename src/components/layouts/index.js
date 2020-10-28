@@ -1,2 +1,5 @@
 export * from './Contact'
 export * from './Hero'
+export * from './Educations'
+export * from './Experiences'
+export * from './FeaturedWork'

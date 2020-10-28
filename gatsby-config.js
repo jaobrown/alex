@@ -11,8 +11,8 @@ module.exports = {
     {
       resolve: `gatsby-source-sanity`,
       options: {
-        projectId: `lvwcfzpn`,
-        dataset: `production`,
+        projectId: process.env.GATSBY_SANITY_PROJECT_ID,
+        dataset: process.env.GATSBY_SANITY_DATASET,
         graphqlTag: 'default',
       },
     },
@@ -23,6 +23,7 @@ module.exports = {
         aliases: {
           '@elements': './components/elements', // <- "@elements" will become ./src/elements
           '@globals': './components/globals',
+          '@client-config': '../client-config.js',
           '@hooks': './hooks',
           '@images': './images',
           '@layouts': './components/layouts',

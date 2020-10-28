@@ -10,7 +10,7 @@ export const Home = ({ heading, subheading }) => {
           <span className="absolute top-0 left-0 z-10 transform -translate-x-12 -translate-y-1/2 text-blue">
             <StripeBall className="w-24 h-24" />
           </span>
-          <h1 className="relative z-20 text-4xl font-bold leading-tight capitalize">
+          <h1 className="relative z-20 text-4xl font-bold leading-tight tracking-wide capitalize">
             {heading}
           </h1>
           <h2 className="relative z-20 flex items-center justify-start font-serif text-right md:justify-end">

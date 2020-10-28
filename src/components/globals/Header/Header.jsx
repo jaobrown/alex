@@ -10,7 +10,7 @@ import { Logo } from '@images/svg/Logo'
 export const Header = ({ colorMode }) => {
   return (
     <header
-      className={`py-6 ${
+      className={`py-6 lg:py-10 xl:py-14 ${
         colorMode === 'dark'
           ? 'text-white bg-gray-700'
           : 'bg-white text-gray-700'

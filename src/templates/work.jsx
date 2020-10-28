@@ -2,26 +2,32 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import BlockContent from '@sanity/block-content-to-react'
-import { Layout } from '@globals'
 
-// todo: setup environment vars for sanity client
+import { Layout } from '@globals'
+import { Link } from '@elements'
+
 const WorkTemplate = ({ data }) => {
   const page = data.sanityWork
-  console.log('WorkTemplate -> page', page)
   return (
     <Layout>
       <div className="container">
         <section className="pt-10">
           <Img fluid={page.featuredImage.asset.fluid} />
-          <h1 className="text-2xl font-bold tracking-wider text-gray-700 uppercase">
-            {page.title}, <a href={page.companyWebsite}>{page.companyName}</a>
+          <h1 className="mt-4 text-xl font-semibold leading-snug tracking-wider uppercase sm:mt-4 md:text-2xl">
+            {page.title}
           </h1>
+          <Link
+            className="mt-1 text-sm font-semibold tracking-wider uppercase"
+            to={page.companyWebsite}
+          >
+            {page.companyName}
+          </Link>
         </section>
         <section className="prose">
           <BlockContent
             blocks={page._rawContent}
-            dataset="production"
-            projectId="lvwcfzpn"
+            dataset={process.env.GATSBY_SANITY_DATASET}
+            projectId={process.env.GATSBY_SANITY_PROJECT_ID}
           />
         </section>
       </div>
