@@ -32,6 +32,10 @@ const PageTemplate = ({ data, location }) => {
           const { Hero } = require('@layouts')
           layout = <Hero key={c._key} {...c} />
           break
+        case 'threeColumnCta':
+          const { ThreeColumnCta } = require('@layouts')
+          layout = <ThreeColumnCta key={c._key} {...c} />
+          break
         default:
           const { ComingSoon } = require('@utils/components')
           layout = <ComingSoon key={c._key} {...c} />
