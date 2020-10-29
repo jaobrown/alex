@@ -11,9 +11,9 @@ export const OutlineBall = ({ className }) => {
       <path
         d="M19 35c8.837 0 16-7.163 16-16S27.837 3 19 3 3 10.163 3 19s7.163 16 16 16z"
         stroke="currentColor"
-        stroke-width="2"
-        stroke-miterlimit="10"
-      />
+        strokeWidth={2}
+        strokeMiterlimit={10}
+      ></path>
     </svg>
   )
 }

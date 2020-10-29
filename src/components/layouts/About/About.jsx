@@ -12,7 +12,7 @@ export const About = ({ heading, subheading, tidbits }) => {
       <span className="absolute top-0 left-0 transform translate-y-8 sm:translate-y-16 lg:translate-y-24">
         <span className="block w-48 h-0.5 lg:w-56 xl:w-80 bg-gray-300" />
       </span>
-      <div className="max-w-md px-4 mx-auto lg:container lg:px-20 xl:px-40">
+      <div className="max-w-md px-4 mx-auto lg:container lg:px-20">
         <div className="lg:grid lg:grid-cols-2 lg:gap-20 xl:gap-40">
           <div className="py-10 lg:py-0">
             <Illustration />
@@ -25,7 +25,7 @@ export const About = ({ heading, subheading, tidbits }) => {
           </div>
           <div className="mt-6 space-y-8">
             {tidbits.map((tidbit, idx) => (
-              <div>
+              <div className="max-w-sm">
                 <span className="inline-block font-serif text-lg text-blue">
                   0{idx + 1}
                 </span>

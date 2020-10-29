@@ -6,25 +6,38 @@ import BlockContent from '@sanity/block-content-to-react'
 import { Layout } from '@globals'
 import { Link } from '@elements'
 
+const BlockRenderer = (props) => {
+  const { style = 'normal' } = props.node
+
+  if (style === 'normal') {
+    return <p className="max-w-2xl">{props.children}</p>
+  }
+
+  // Fall back to default handling
+  return BlockContent.defaultSerializers.types.block(props)
+}
+
 const WorkTemplate = ({ data }) => {
   const page = data.sanityWork
+  console.log('WorkTemplate -> page', page)
   return (
     <Layout>
       <div className="container">
         <section className="pt-10">
           <Img fluid={page.featuredImage.asset.fluid} />
-          <h1 className="mt-4 text-xl font-semibold leading-snug tracking-wider uppercase sm:mt-4 md:text-2xl">
+          <h1 className="mt-6 text-xl font-bold leading-snug tracking-wider uppercase sm:mt-10 md:text-2xl">
             {page.title}
           </h1>
           <Link
-            className="mt-1 text-sm font-semibold tracking-wider uppercase"
+            className="block mt-1 text-sm font-semibold tracking-wider uppercase sm:text-base sm:mt-3"
             to={page.companyWebsite}
           >
             {page.companyName}
           </Link>
         </section>
-        <section className="prose">
+        <section className="pb-10 mt-4 prose sm:mt-10 sm:pb-16 lg:pb-24 max-w-none">
           <BlockContent
+            serializers={{ types: { block: BlockRenderer } }}
             blocks={page._rawContent}
             dataset={process.env.GATSBY_SANITY_DATASET}
             projectId={process.env.GATSBY_SANITY_PROJECT_ID}

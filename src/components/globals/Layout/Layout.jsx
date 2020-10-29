@@ -14,10 +14,10 @@ export const Layout = ({ colorMode, children }) => {
 
   return (
     <AppContext.Provider value={{ isMenuOpen: isToggled, toggleMenu: toggle }}>
-      <div className="font-sans antialiased">
+      <div className="font-sans antialiased bg-white">
         <Header colorMode={colorMode} />
         <Drawer />
-        <main className="bg-white">{children}</main>
+        <main className="">{children}</main>
         <Contact />
         <Footer />
       </div>

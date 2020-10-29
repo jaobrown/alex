@@ -11,13 +11,13 @@ export const FancyLink = ({ style, to, className, children }) => {
 
   switch (style) {
     case 'stripes':
-      type = <StripeBall className="w-8 h-8" />
+      type = <StripeBall className="w-9 h-9" />
       break
     case 'solid':
-      type = <SolidBall className="w-8 h-8" />
+      type = <SolidBall className="w-9 h-9" />
       break
     case 'outline':
-      type = <OutlineBall className="w-8 h-8" />
+      type = <OutlineBall className="w-9 h-9" />
       break
     default:
       type = <div>Oops! Unhandled style type of {style}</div>
@@ -25,11 +25,12 @@ export const FancyLink = ({ style, to, className, children }) => {
   }
 
   return (
-    <div>
-      <span className="text-blue">{type}</span>
-      <Link to={to} className={className}>
-        {children}
-      </Link>
-    </div>
+    <Link
+      to={to}
+      className={`flex items-center xl:text-lg hover:opacity-50 transition duration-100 ${className}`}
+    >
+      <span className="mr-6 text-blue">{type}</span>
+      {children}
+    </Link>
   )
 }
