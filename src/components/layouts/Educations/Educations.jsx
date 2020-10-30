@@ -1,4 +1,5 @@
 import React from 'react'
+import dayjs from 'dayjs'
 
 export const Educations = ({ educations }) => {
   return (
@@ -8,20 +9,27 @@ export const Educations = ({ educations }) => {
           education
         </h2>
         <div className="mt-8 lg:mt-12">
-          {educations.map((education) => (
-            <div key={education.id} className="mx-auto sm:px-10 md:px-13">
-              <p className="font-serif text-sm">
-                {education.startDate} -{' '}
-                {education.endDate ? education.endDate : `Present`}
-              </p>
-              <h3 className="text-xl font-bold tracking-wider uppercase md:text-2xl">
-                {education.school}
-              </h3>
-              <h4 className="mt-6 text-sm font-semibold tracking-wider uppercase md:text-base">
-                {education.degree}
-              </h4>
-            </div>
-          ))}
+          {educations.map((education) => {
+            const date = {}
+            date.start = dayjs(education.startDate).format('MMMM YYYY')
+            date.end = education.endDate
+              ? dayjs(education.endDate).format('MMMM YYYY')
+              : 'Present'
+
+            return (
+              <div key={education.id} className="mx-auto sm:px-10 md:px-13">
+                <p className="font-serif text-sm">
+                  {date.start} - {date.end}
+                </p>
+                <h3 className="text-xl font-bold tracking-wider uppercase md:text-2xl">
+                  {education.school}
+                </h3>
+                <h4 className="mt-2 text-sm font-semibold tracking-wider uppercase md:text-base">
+                  {education.degree}
+                </h4>
+              </div>
+            )
+          })}
         </div>
       </div>
     </section>

@@ -20,7 +20,7 @@ export const Link = ({
       style = 'font-serif font-normal lowercase border-b border-blue'
       break
     default:
-      style = 'uppercase font-semibold tracking-widest'
+      style = 'uppercase font-semibold'
       break
   }
 

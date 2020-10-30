@@ -87,6 +87,10 @@ module.exports = {
       default: {
         css: {
           color: theme('colors.gray.700'),
+          figure: {
+            marginTop: '2.5em',
+            marginBottom: '2.5em',
+          },
           p: {
             fontFamily: theme('fontFamily.serif[0]'),
             fontSize: '1.125rem',

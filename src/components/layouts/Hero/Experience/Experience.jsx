@@ -6,7 +6,7 @@ import { Box } from '@images/svg/Box'
 
 export const Experience = ({ heading, subheading, resume }) => {
   return (
-    <section className="pt-10 pb-10 text-black xl:pb-12 md:pt-16 lg:pt-20">
+    <section className="pt-16 pb-10 text-black xl:pb-12 md:pt-16 lg:pt-20">
       <div className="container">
         <div className="text-center">
           <h1 className="relative mx-auto text-4xl font-bold leading-tight tracking-wide capitalize w-min-content sm:text-5xl md:text-6xl">
@@ -18,7 +18,7 @@ export const Experience = ({ heading, subheading, resume }) => {
             </span>
             {heading}
           </h1>
-          <p className="max-w-md mx-auto mt-3 font-serif md:text-lg">
+          <p className="max-w-md mx-auto mt-3 font-serif leading-snug md:text-lg">
             {subheading}
           </p>
           <Link

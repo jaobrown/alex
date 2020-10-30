@@ -1,9 +1,16 @@
 import React from 'react'
+import Img from 'gatsby-image'
+import { getFluidGatsbyImage } from 'gatsby-source-sanity'
+import clientConfig from '@client-config'
 
-import { Illustration } from '@images/svg/Illustration'
 import { StripeBox } from '@images/svg/StripeBox'
 
-export const About = ({ heading, subheading, tidbits }) => {
+export const About = ({ heading, subheading, tidbits, photo }) => {
+  const fluidProps = getFluidGatsbyImage(
+    photo?.asset?._id,
+    { maxWidth: 1200 },
+    clientConfig.sanity
+  )
   return (
     <section className="relative pt-10 pb-20 lg:pt-32 lg:pb-24">
       <span className="absolute top-0 right-0 hidden transform sm:block text-blue sm:translate-y-10 lg:translate-y-12 sm:-translate-x-5 md:-translate-x-10 xl:translate-y-16 xl:-translate-x-16">
@@ -15,24 +22,24 @@ export const About = ({ heading, subheading, tidbits }) => {
       <div className="max-w-md px-4 mx-auto lg:container lg:px-20">
         <div className="lg:grid lg:grid-cols-2 lg:gap-20 xl:gap-40">
           <div className="py-10 lg:py-0">
-            <Illustration />
+            <Img fluid={fluidProps} className="w-full h-auto" />
             <h2 className="mt-8 text-xl font-bold tracking-wider uppercase lg:mt-12 md:text-2xl">
               {heading}
             </h2>
-            <p className="mt-4 font-serif leading-tight tracking-wide">
+            <p className="mt-4 font-serif leading-snug tracking-wide">
               {subheading}
             </p>
           </div>
           <div className="mt-6 space-y-8">
             {tidbits.map((tidbit, idx) => (
-              <div className="max-w-sm">
+              <div className="max-w-sm" key={tidbit._key}>
                 <span className="inline-block font-serif text-lg text-blue">
                   0{idx + 1}
                 </span>
                 <h3 className="text-lg font-semibold tracking-wider uppercase">
                   {tidbit.heading}
                 </h3>
-                <p className="mt-2 font-serif leading-tight tracking-wide">
+                <p className="mt-2 font-serif leading-snug tracking-wide">
                   {tidbit.body}
                 </p>
               </div>

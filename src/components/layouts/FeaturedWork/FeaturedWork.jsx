@@ -9,7 +9,7 @@ import { slugify } from '@utils'
 export const FeaturedWork = ({ works }) => {
   return (
     <section className="pb-10 sm:pb-20">
-      <div className="container space-y-8 sm:space-y-16 xl:space-y-20">
+      <div className="container space-y-12 sm:space-y-16 xl:space-y-20">
         {works.map((work) => {
           const slug = slugify(`${work.title} ${work.companyName}`)
           const fluidProps = getFluidGatsbyImage(
@@ -25,10 +25,10 @@ export const FeaturedWork = ({ works }) => {
             >
               <article>
                 <Img fluid={fluidProps} alt={`${work.title} preview`} />
-                <h2 className="mt-2 text-xl font-bold tracking-wider uppercase sm:mt-4 lg:mt-6 md:text-2xl">
+                <h2 className="mt-2 text-lg font-bold leading-tight tracking-wider uppercase sm:text-xl sm:mt-4 lg:mt-6 md:text-2xl">
                   {work.title}
                 </h2>
-                <p className="mt-2 text-sm font-semibold tracking-wider uppercase md:text-base lg:mt-3 text-blue">
+                <p className="mt-1 text-sm font-semibold tracking-wider uppercase md:text-base text-blue">
                   {work.companyName}
                 </p>
               </article>

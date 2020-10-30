@@ -1,4 +1,5 @@
 import React from 'react'
+import dayjs from 'dayjs'
 
 export const Experiences = ({ experiences }) => {
   return (
@@ -8,23 +9,30 @@ export const Experiences = ({ experiences }) => {
           Experience
         </h2>
         <div className="mt-8 space-y-12 lg:mt-12 lg:space-y-16">
-          {experiences.map((experience) => (
-            <div key={experience.id} className="mx-auto sm:px-10 md:px-13">
-              <p className="font-serif text-sm">
-                {experience.startDate} -{' '}
-                {experience.endDate ? experience.endDate : `Present`}
-              </p>
-              <h3 className="text-xl font-bold tracking-wider uppercase md:text-2xl">
-                {experience.name}
-              </h3>
-              <h4 className="mt-6 text-sm font-semibold tracking-wider uppercase text-blue">
-                {experience.position}
-              </h4>
-              <p className="pl-3 mt-2 font-serif border-l-2 border-gray-300 max-w-prose sm:text-lg">
-                {experience.description}
-              </p>
-            </div>
-          ))}
+          {experiences.map((experience) => {
+            const date = {}
+            date.start = dayjs(experience.startDate).format('MMMM YYYY')
+            date.end = experience.endDate
+              ? dayjs(experience.endDate).format('MMMM YYYY')
+              : 'Present'
+
+            return (
+              <div key={experience.id} className="mx-auto sm:px-10 md:px-13">
+                <p className="font-serif text-sm">
+                  {date.start} - {date.end}
+                </p>
+                <h3 className="text-xl font-bold tracking-wider uppercase md:text-2xl">
+                  {experience.name}
+                </h3>
+                <h4 className="mt-6 text-sm font-semibold tracking-wider uppercase text-blue">
+                  {experience.position}
+                </h4>
+                <p className="pl-3 mt-2 font-serif border-l-2 border-gray-300 max-w-prose sm:text-lg">
+                  {experience.description}
+                </p>
+              </div>
+            )
+          })}
         </div>
       </div>
     </section>
