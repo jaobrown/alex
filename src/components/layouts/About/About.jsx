@@ -26,7 +26,7 @@ export const About = ({ heading, subheading, tidbits, photo }) => {
             <h2 className="mt-8 text-xl font-bold tracking-wider uppercase lg:mt-12 md:text-2xl">
               {heading}
             </h2>
-            <p className="mt-4 font-serif leading-snug tracking-wide">
+            <p className="mt-4 font-serif text-lg leading-snug tracking-wide">
               {subheading}
             </p>
           </div>
@@ -39,7 +39,7 @@ export const About = ({ heading, subheading, tidbits, photo }) => {
                 <h3 className="text-lg font-semibold tracking-wider uppercase">
                   {tidbit.heading}
                 </h3>
-                <p className="mt-2 font-serif leading-snug tracking-wide">
+                <p className="mt-2 font-serif text-lg leading-snug tracking-wide">
                   {tidbit.body}
                 </p>
               </div>
